@@ -10,14 +10,14 @@ class OnboardingSinglePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Column(
         children: [
           Image.asset(
             page.image,
             height: 350,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           RichText(
@@ -38,13 +38,13 @@ class OnboardingSinglePage extends StatelessWidget {
                   .toList(),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Text(
             page.description,
             style: GoogleFonts.epilogue(
-              textStyle: TextStyle(fontSize: 16, height: 1.5),
+              textStyle: const TextStyle(fontSize: 16, height: 1.5),
             ),
             textAlign: TextAlign.center,
           )

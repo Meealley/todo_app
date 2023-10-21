@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
       splash: Lottie.asset('assets/images/todo-splah.json'),
       splashIconSize: 250,
       duration: 1000,
-      nextScreen: OnboardingPage(),
+      nextScreen: const OnboardingPage(),
     );
   }
 }
