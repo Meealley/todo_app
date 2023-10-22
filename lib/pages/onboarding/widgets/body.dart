@@ -13,7 +13,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   PageController pageController = PageController();
-  int _indexselected = 0;
+  int _indexSelected = 0;
 
   @override
   void dispose() {
@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
 
   _onPageChanged(index) {
     setState(() {
-      _indexselected = index;
+      _indexSelected = index;
     });
   }
 
