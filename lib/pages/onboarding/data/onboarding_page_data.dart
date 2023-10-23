@@ -6,7 +6,7 @@ final List<OnboardingPageModel> onboardingPages = [
     title: [
       OnboardingPageTitle(
           text: "Welcome Onboard to \n", color: AppConst.kBkDark),
-      OnboardingPageTitle(text: "Todoo📝", color: AppConst.kPurple)
+      OnboardingPageTitle(text: "Todoo 📝", color: AppConst.kPurple)
     ],
     description: "Keep tabs of all your daily activitiy",
     image: "assets/images/slide1.png",
