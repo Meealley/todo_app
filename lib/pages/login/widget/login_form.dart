@@ -12,6 +12,8 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  bool _obscureText = false;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -33,6 +35,7 @@ class _LoginFormState extends State<LoginForm> {
               borderSide: BorderSide(color: AppConst.kPurple),
             ),
           ),
+          keyboardType: TextInputType.emailAddress,
           style: GoogleFonts.epilogue(
             textStyle: TextStyle(fontSize: 17),
           ),
@@ -54,7 +57,25 @@ class _LoginFormState extends State<LoginForm> {
               borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide(color: AppConst.kPurple),
             ),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _obscureText = !_obscureText;
+                  print("suffix icon clicked");
+                });
+              },
+              child: _obscureText
+                  ? Icon(
+                      Icons.visibility,
+                      color: AppConst.kPurple,
+                    )
+                  : Icon(
+                      Icons.visibility_off,
+                      color: AppConst.kPurple,
+                    ),
+            ),
           ),
+          obscureText: _obscureText,
           style: GoogleFonts.epilogue(
             textStyle: TextStyle(fontSize: 17),
           ),
@@ -63,6 +84,17 @@ class _LoginFormState extends State<LoginForm> {
           height: 16,
         ),
         ForgotPasswordLabel(),
+        SizedBox(
+          height: 44,
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: CustomButton(
+              title: "Login",
+              onPressed: () {
+                print("login");
+              }),
+        )
         // Spacer(),
       ],
     ));

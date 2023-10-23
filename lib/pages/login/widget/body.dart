@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_app/pages/login/widget/log_register_label.dart';
 import 'package:todo_app/pages/login/widget/login_form.dart';
 
 class Body extends StatelessWidget {
@@ -14,7 +15,7 @@ class Body extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(13),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               'assets/images/todo_logo.png',
@@ -26,8 +27,8 @@ class Body extends StatelessWidget {
             Text(
               "Login",
               style: GoogleFonts.epilogue(
-                  textStyle:
-                      TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
             ),
             SizedBox(
               height: 18,
@@ -39,7 +40,11 @@ class Body extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            LoginForm()
+            LoginForm(),
+            SizedBox(
+              height: 40,
+            ),
+            LogRegister(),
           ],
         ),
       ),
