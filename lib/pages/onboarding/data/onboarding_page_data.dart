@@ -4,8 +4,9 @@ import 'package:todo_app/theme/app_colors.dart';
 final List<OnboardingPageModel> onboardingPages = [
   OnboardingPageModel(
     title: [
-      OnboardingPageTitle(text: "Welcome to \n", color: AppConst.kBkDark),
-      OnboardingPageTitle(text: "Todooo", color: AppConst.kPurple)
+      OnboardingPageTitle(
+          text: "Welcome Onboard to \n", color: AppConst.kBkDark),
+      OnboardingPageTitle(text: "Todoo📝", color: AppConst.kPurple)
     ],
     description: "Keep tabs of all your daily activitiy",
     image: "assets/images/slide1.png",
