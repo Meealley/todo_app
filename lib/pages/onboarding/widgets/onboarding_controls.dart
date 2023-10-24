@@ -19,7 +19,7 @@ class OnboardingControls extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isLastPage) {
       return Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 18,
         ),
         child: SizedBox(
@@ -30,7 +30,7 @@ class OnboardingControls extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => LoginPage(),
+                      builder: (context) => const LoginPage(),
                     ),
                   );
                 })),
@@ -38,7 +38,7 @@ class OnboardingControls extends StatelessWidget {
     }
 
     return Padding(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 20,
       ),
       child: Row(

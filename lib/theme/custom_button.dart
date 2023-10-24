@@ -11,18 +11,18 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         style: TextButton.styleFrom(
-          minimumSize: Size(50, 40),
+          minimumSize: const Size(50, 40),
           backgroundColor: AppConst.kPurple,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
         ),
         onPressed: onPressed,
         child: Text(
           title,
           style: GoogleFonts.epilogue(
-              textStyle: TextStyle(fontSize: 18, color: AppConst.kLight)),
+              textStyle: const TextStyle(fontSize: 18, color: AppConst.kLight)),
         ));
   }
 }

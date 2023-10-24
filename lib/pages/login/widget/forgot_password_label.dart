@@ -12,18 +12,18 @@ class ForgotPasswordLabel extends StatelessWidget {
       children: [
         Text(
           "Rember me",
-          style: GoogleFonts.epilogue(textStyle: TextStyle(fontSize: 17)),
+          style: GoogleFonts.epilogue(textStyle: const TextStyle(fontSize: 17)),
         ),
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => ForgotPassword()),
+              MaterialPageRoute(builder: (context) => const ForgotPassword()),
             );
             print("forgot password");
           },
           child: Text(
             "Forgot Password?",
-            style: GoogleFonts.epilogue(textStyle: TextStyle(fontSize: 17)),
+            style: GoogleFonts.epilogue(textStyle: const TextStyle(fontSize: 17)),
           ),
         )
       ],

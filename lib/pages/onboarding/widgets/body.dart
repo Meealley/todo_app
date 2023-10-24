@@ -33,7 +33,7 @@ class _BodyState extends State<Body> {
 
   _onDotPressed(int index) {
     pageController.animateToPage(index,
-        duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
   }
 
   _onNexted() {
@@ -43,14 +43,14 @@ class _BodyState extends State<Body> {
       }
     });
     pageController.animateToPage(_indexSelected,
-        duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
   }
 
   _onskipped() {
     setState(() {
       _indexSelected = onboardingPages.length - 1;
       pageController.animateToPage(_indexSelected,
-          duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
+          duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
     });
   }
 
@@ -67,7 +67,7 @@ class _BodyState extends State<Body> {
             onPageChanged: _onPageChanged,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Expanded(
@@ -77,7 +77,7 @@ class _BodyState extends State<Body> {
                 dotsLength: onboardingPages.length,
                 indexSelected: _indexSelected,
                 onDotPressed: _onDotPressed),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             OnboardingControls(

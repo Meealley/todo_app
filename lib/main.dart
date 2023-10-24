@@ -11,19 +11,25 @@ void main() {
         create: (_) => UserProvider(),
       ),
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textSelectionTheme: TextSelectionThemeData(
+        // useMaterial3: true,
+        textSelectionTheme: const TextSelectionThemeData(
           cursorColor: AppConst.kPurple,
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -39,7 +45,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: "Todo App",
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

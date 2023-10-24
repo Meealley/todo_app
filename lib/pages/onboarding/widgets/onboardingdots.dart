@@ -23,7 +23,7 @@ class OnboardingDots extends StatelessWidget {
           (index) => GestureDetector(
                 onTap: () => onDotPressed(index),
                 child: Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: Container(
                     height: size,
                     width: size,

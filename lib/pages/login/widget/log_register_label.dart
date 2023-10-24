@@ -11,7 +11,7 @@ class LogRegister extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => RegisterPage(),
+          builder: (context) => const RegisterPage(),
         ),
       ),
       child: RichText(
@@ -20,13 +20,13 @@ class LogRegister extends StatelessWidget {
             TextSpan(
               text: "Don't have an account? ",
               style: GoogleFonts.epilogue(
-                textStyle: TextStyle(color: AppConst.kBkDark),
+                textStyle: const TextStyle(color: AppConst.kBkDark),
               ),
             ),
             TextSpan(
               text: "Register",
               style: GoogleFonts.epilogue(
-                textStyle: TextStyle(color: AppConst.kPurple),
+                textStyle: const TextStyle(color: AppConst.kPurple),
               ),
             )
           ],
