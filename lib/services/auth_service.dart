@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/model/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:todo_app/pages/home/home_screen.dart';
+import 'package:todo_app/pages/login/login_page.dart';
 import 'package:todo_app/providers/user_provider.dart';
 import 'package:todo_app/utils/utils.dart';
 
@@ -62,11 +63,15 @@ class AuthService {
       var userProvider = Provider.of<UserProvider>(context, listen: false);
       final navigator = Navigator.of(context);
       // final User user =
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      String? token = prefs.getString("Bearer");
       http.Response res = await http.post(
         Uri.parse('${Constants.uri}user/login'),
         body: jsonEncode({'email': email, 'password': password}),
         headers: <String, String>{
           "Content-Type": "application/json; charset=utf-8",
+          'authorization': 'Bearer ${token!}',
         },
       );
 
@@ -78,11 +83,42 @@ class AuthService {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           userProvider.setUser(res.body);
           await prefs.setString('Bearer', jsonDecode(res.body)['token']);
-          navigator.pushAndRemoveUntil(
+          await prefs.setString('userId', jsonDecode(res.body)['_id']);
+          // print(jsonDecode(res.body)['token']);
+          String? token = prefs.getString("Bearer");
+          // String? useId = prefs.getString("userId");
+
+          // print(res.body);
+          // print(token);
+          // print(useId);
+
+          final userId = jsonDecode(res.body)['_id'];
+          // print(userId);
+          if (token != null) {
+            navigator.pushAndRemoveUntil(
               MaterialPageRoute(
                 builder: (context) => const HomePage(),
               ),
-              (route) => false);
+              (route) => false,
+            );
+            // var userRes = await http.get(
+            //   Uri.parse('${Constants.uri}user/$userId'),
+            //   headers: <String, String>{
+            //     "Content-Type": "application/json; charset=utf-8",
+            //     'Authorization': 'Bearer $token',
+            //   },
+            // );
+            // if (userRes.statusCode == 200) {
+            //   // var userData = jsonDecode(userRes.body);
+            //   userProvider.setUser(jsonDecode(userRes.body));
+            // } else {
+            //   navigator.push(
+            //     MaterialPageRoute(
+            //       builder: (context) => LoginPage(),
+            //     ),
+            //   );
+            // }
+          }
         },
       );
     } catch (e) {
@@ -92,38 +128,77 @@ class AuthService {
       );
     }
   }
+//Get User data;
 
-  //Get user data
   void getUserData(
     BuildContext context,
   ) async {
     try {
       var userProvider = Provider.of<UserProvider>(context, listen: false);
       SharedPreferences prefs = await SharedPreferences.getInstance();
+      // userProvider.setUser(res.body);
       String? token = prefs.getString("Bearer");
-
+      String? userId = prefs.getString("userId");
+      print(token);
+      print(userId);
       if (token == null) {
         prefs.setString('Bearer', '');
       }
-      var tokenRes = await http.get(
-        Uri.parse('${Constants.uri}/:id'),
+
+      var userRes = await http.get(
+        Uri.parse('${Constants.uri}user/$userId'),
         headers: <String, String>{
           "Content-Type": "application/json; charset=utf-8",
-          'Bearer': token!,
+          'authorization': 'Bearer $token',
         },
       );
-
-      var response = jsonDecode(tokenRes.body);
-      if (response == true) {
-        http.Response userRes = await http.get(
-          Uri.parse('${Constants.uri}/'),
-          headers: <String, String>{
-            "Content-Type": "application/json; charset=utf-8",
-            'Bearer': token,
-          },
-        );
-        userProvider.setUser(userRes.body);
+      if (userRes.statusCode == 200) {
+        // var userData = jsonDecode(userRes.body);
+        userProvider.setUser(jsonDecode(userRes.body));
       }
-    } catch (e) {}
+    } catch (e) {
+      // showSnackBar(
+      //   context,
+      //   e.toString(),
+      // );
+    }
   }
 }
+
+  //Get user data
+  // void getUserData(
+  //   BuildContext context,
+  // ) async {
+  //   try {
+  //     var userProvider = Provider.of<UserProvider>(context, listen: false);
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     String? token = prefs.getString("Bearer");
+
+  //     if (token == null) {
+  //       prefs.setString('Bearer', '');
+  //     }
+  //     var tokenRes = await http.post(
+  //       Uri.parse('${Constants.uri}user/login'),
+  //       headers: <String, String>{
+  //         "Content-Type": "application/json; charset=utf-8",
+  //         'Authorization': 'Bearer ${token!}',
+  //       },
+  //     );
+
+  //     var response = jsonDecode(tokenRes.body);
+  //     if (response == true) {
+  //       http.Response userRes = await http.get(
+  //         Uri.parse('${Constants.uri}user/:id'),
+  //         headers: <String, String>{
+  //           "Content-Type": "application/json; charset=utf-8",
+  //           'Authorization': 'Bearer $token',
+  //         },
+  //       );
+  //       print(userRes);
+
+  //       userProvider.setUser(userRes.body);
+  //     }
+  //   } catch (e) {
+  //     showSnackBar(context, e.toString());
+  //   }
+  // }

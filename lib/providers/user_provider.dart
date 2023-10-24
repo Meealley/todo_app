@@ -3,13 +3,14 @@ import 'package:todo_app/model/user_model.dart';
 
 class UserProvider extends ChangeNotifier {
   User _user = User(
-      id: "",
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      mobile: "",
-      token: "");
+    id: "",
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    mobile: "",
+    token: "",
+  );
 
   User get user => _user;
 
