@@ -157,10 +157,10 @@ class AuthService {
         userProvider.setUser(jsonDecode(userRes.body));
       }
     } catch (e) {
-      // showSnackBar(
-      //   context,
-      //   e.toString(),
-      // );
+      showSnackBar(
+        context,
+        e.toString(),
+      );
     }
   }
 }
