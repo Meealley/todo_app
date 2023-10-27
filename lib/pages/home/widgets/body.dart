@@ -1,7 +1,9 @@
+import 'package:animated_emoji/animated_emoji.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/providers/user_provider.dart';
+import 'package:todo_app/theme/app_style.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,22 +11,55 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
+    // "Hello, ${user.firstname.substring(0, 1).toUpperCase()}${user.firstname.substring(1)}",
+    // Text(user.email)
+    final now = DateTime.now();
+    final currentHour = now.hour;
+
+    String greeting = getGreeting(currentHour);
 
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        child: Padding(
+      padding: EdgeInsets.all(12),
+      child: SingleChildScrollView(
         child: Column(
           children: [
-            Text(
-              "Hello, ${user.firstname.substring(0, 1).toUpperCase()}${user.firstname.substring(1)}",
-              style: GoogleFonts.epilogue(
-                textStyle: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-              ),
+            Row(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Good $greeting! ${user.firstname.substring(0, 1).toUpperCase()}${user.firstname.substring(1)}",
+                          style: appstyle(23, Colors.black, FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        AnimatedEmoji(AnimatedEmojis.alarmClock),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
-            Text(user.email)
           ],
         ),
       ),
-    );
+    ));
+  }
+
+  String getGreeting(int hour) {
+    if (hour >= 5 && hour < 12) {
+      return 'Morning';
+    } else if (hour >= 12 && hour < 17) {
+      return 'Afternoon';
+    } else if (hour >= 17 && hour < 21) {
+      return 'Evening';
+    } else {
+      return 'Night';
+    }
   }
 }
