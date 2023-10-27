@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/pages/login/widget/forgot_password_label.dart';
 import 'package:todo_app/theme/app_colors.dart';
+import 'package:todo_app/theme/app_style.dart';
 import 'package:todo_app/theme/custom_button.dart';
 import 'package:todo_app/services/auth_service.dart';
 
@@ -45,7 +46,8 @@ class _LoginFormState extends State<LoginForm> {
           children: [
             Text(
               "Email Address",
-              style: GoogleFonts.epilogue(textStyle: const TextStyle(fontSize: 16)),
+              style: GoogleFonts.epilogue(
+                  textStyle: const TextStyle(fontSize: 16)),
             ),
             const SizedBox(
               height: 12,
@@ -61,6 +63,7 @@ class _LoginFormState extends State<LoginForm> {
                 return null;
               },
               decoration: InputDecoration(
+                errorStyle: appstyle(14, Colors.red, FontWeight.normal),
                 labelText: "Enter your email address",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -82,7 +85,9 @@ class _LoginFormState extends State<LoginForm> {
             ),
             Text(
               "Password",
-              style: GoogleFonts.epilogue(textStyle: const TextStyle(fontSize: 16)),
+              style: GoogleFonts.epilogue(
+                textStyle: const TextStyle(fontSize: 16),
+              ),
             ),
             const SizedBox(
               height: 12,
@@ -98,7 +103,8 @@ class _LoginFormState extends State<LoginForm> {
                 return null;
               },
               decoration: InputDecoration(
-                labelText: "Min of 8 characters",
+                errorStyle: appstyle(14, Colors.red, FontWeight.normal),
+                labelText: "Min of 6 characters",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: const BorderSide(color: AppConst.kPurple),

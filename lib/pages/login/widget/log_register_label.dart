@@ -28,7 +28,7 @@ class LogRegister extends StatelessWidget {
               style: GoogleFonts.epilogue(
                 textStyle: const TextStyle(color: AppConst.kPurple),
               ),
-            )
+            ),
           ],
         ),
       ),
