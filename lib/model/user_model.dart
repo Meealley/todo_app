@@ -22,13 +22,13 @@ class User {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      // 'id': id,
       'firstname': firstname,
       'lastname': lastname,
       'email': email,
       'mobile': mobile,
       'password': password,
-      'token': token,
+      // 'token': token,
     };
   }
 

@@ -261,11 +261,11 @@ class _RegisterFormState extends State<RegisterForm> {
                     widget.reisterKey.currentState!.save();
                     authService.signUpUser(
                       context: context,
-                      email: _email,
-                      password: _password,
-                      firstname: _fname,
-                      lastname: _lname,
-                      mobile: _mobile,
+                      email: widget.emailController.text,
+                      password: widget.passwordController.text,
+                      firstname: widget.firstNameController.text,
+                      lastname: widget.lastNameController.text,
+                      mobile: widget.mobileController.text,
                     );
                   }
 
