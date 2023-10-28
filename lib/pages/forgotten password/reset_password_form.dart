@@ -64,7 +64,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.55,
+            height: MediaQuery.of(context).size.height * 0.58,
           ),
           SizedBox(
             width: double.infinity,

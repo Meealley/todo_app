@@ -35,7 +35,7 @@ class _BodyState extends State<Body> {
               height: 23,
             ),
             ResetPasswordForm(
-                resetKey: _resetKey, emailController: _emailController)
+                resetKey: _resetKey, emailController: _emailController),
           ],
         ),
       ),
