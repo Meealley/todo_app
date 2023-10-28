@@ -20,33 +20,6 @@ class HomeScreen extends StatelessWidget {
 
     String greeting = getGreeting(currentHour);
 
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     backgroundColor: AppConst.kPurple,
-    //     title: Text(
-    //       "Good $greeting! ${user.firstname.substring(0, 1).toUpperCase()}${user.firstname.substring(1)}",
-    //       style: appstyle(
-    //         23,
-    //         Colors.white,
-    //         FontWeight.w600,
-    //       ),
-    //     ),
-    //     actions: [
-    //       IconButton(
-    //         onPressed: () {
-    //           print("notifications clicked");
-    //         },
-    //         icon: Icon(Icons.notifications),
-    //       ),
-    //       IconButton(
-    //         onPressed: () {
-    //           print("notifications clicked");
-    //         },
-    //         icon: Icon(Icons.settings),
-    //       ),
-    //     ],
-    //   ),
-    // );
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.all(12),
@@ -73,16 +46,6 @@ class HomeScreen extends StatelessWidget {
                         AnimatedEmoji(AnimatedEmojis.alarmClock),
                       ],
                     ),
-                    // Row(
-                    //   children: [
-                    //     IconButton(
-                    //       onPressed: () {
-                    //         print('notification');
-                    //       },
-                    //       icon: Icon(Icons.notifications),
-                    //     ),
-                    //   ],
-                    // )
                   ],
                 ),
               ],

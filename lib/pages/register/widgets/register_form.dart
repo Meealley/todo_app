@@ -208,7 +208,7 @@ class _RegisterFormState extends State<RegisterForm> {
             controller: widget.passwordController,
             validator: (password) {
               if (password == null || password.isEmpty) {
-                return "Mobile number is required";
+                return "Password is required";
               } else if (password.length < 6) {
                 return "Password must be at least 6 characters";
               }

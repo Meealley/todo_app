@@ -50,9 +50,18 @@ class HomeList extends StatelessWidget {
                 return Row(
                   children: [
                     Container(
+                      padding: EdgeInsets.all(9),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: Colors.grey.shade300),
-                      child: Center(child: Icon(tasklist[index].icon)),
+                      child: Center(
+                        child: Icon(
+                          tasklist[index].icon,
+                          color: tasklist[index].color,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
                     ),
                     Text(
                       tasklist[index].title,
