@@ -25,39 +25,30 @@ class HomeListDetails extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
               context: context,
-              builder: (context) {
-                return Container(
-                  height: MediaQuery.of(context).size.height * 0.40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(18),
-                      topRight: Radius.circular(18),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 12,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                              labelText: 'Task Name',
-                            ),
-                            style: appstyle(17, Colors.black, FontWeight.w600),
-                          )
-                        ],
+              builder: (context) => SingleChildScrollView(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom,
                       ),
-                    ],
-                  ),
-                );
-              });
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            TextField(
+                              autofocus: true,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  label: Text("Task name"),
+                                  labelStyle: appstyle(
+                                      18, Colors.black, FontWeight.normal)),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ));
         },
-        tooltip: 'Increment',
+        tooltip: 'Add to do',
         child: const Icon(Icons.add),
       ),
     );
