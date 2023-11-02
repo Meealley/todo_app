@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/home/data/home_list_model.dart';
 import 'package:todo_app/pages/home/widgets/home_list_details.dart';
+import 'package:todo_app/pages/home/widgets/home_project.dart';
 import 'package:todo_app/theme/app_style.dart';
 
 class HomeList extends StatelessWidget {
@@ -57,32 +58,41 @@ class HomeList extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Row(
+                  child: Column(
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(9),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey.shade300),
-                        child: Center(
-                          child: Icon(
-                            tasklist[index].icon,
-                            color: tasklist[index].color,
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(9),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey.shade300),
+                            child: Center(
+                              child: Icon(
+                                tasklist[index].icon,
+                                color: tasklist[index].color,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        tasklist[index].title,
-                        style: appstyle(17, Colors.black, FontWeight.normal),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            tasklist[index].title,
+                            style:
+                                appstyle(17, Colors.black, FontWeight.normal),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 );
               }),
-        )
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        HomeProject(),
       ],
     );
   }

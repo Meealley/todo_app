@@ -8,4 +8,6 @@ final List<HomeListView> tasklist = [
       title: "Today", icon: Icons.date_range_rounded, color: Colors.green),
   HomeListView(title: "Upcoming", icon: Icons.date_range, color: Colors.purple),
   HomeListView(title: "Goal", icon: Ionicons.trophy, color: Colors.orange),
+  HomeListView(
+      title: "Projects", icon: Ionicons.pencil_sharp, color: Colors.red),
 ];

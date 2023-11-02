@@ -34,6 +34,17 @@ class HomeListDetails extends StatelessWidget {
                         padding: EdgeInsets.all(8),
                         child: Column(
                           children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Task Name",
+                              style:
+                                  appstyle(18, Colors.black, FontWeight.w500),
+                            ),
+                            SizedBox(
+                              height: 18,
+                            ),
                             TextField(
                               autofocus: true,
                               keyboardType: TextInputType.text,
@@ -41,7 +52,10 @@ class HomeListDetails extends StatelessWidget {
                                   label: Text("Task name"),
                                   labelStyle: appstyle(
                                       18, Colors.black, FontWeight.normal)),
-                            )
+                            ),
+                            SizedBox(
+                              height: 29,
+                            ),
                           ],
                         ),
                       ),
