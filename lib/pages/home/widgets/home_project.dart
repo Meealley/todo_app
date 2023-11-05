@@ -60,19 +60,9 @@ class _HomeProjectState extends State<HomeProject> {
                                         shape: BoxShape.circle,
                                         color: Colors.grey.shade300),
                                     child: Center(
-                                      child: RotationTransition(
-                                        turns:
-                                            Tween(begin: 0.0, end: 0.5).animate(
-                                          CurvedAnimation(
-                                            parent: ModalRoute.of(context)!
-                                                .animation!,
-                                            curve: Curves.fastOutSlowIn,
-                                          ),
-                                        ),
-                                        child: Icon(
-                                          Ionicons.pencil,
-                                          color: Colors.red,
-                                        ),
+                                      child: Icon(
+                                        Ionicons.pencil,
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),

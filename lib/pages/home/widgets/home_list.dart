@@ -9,27 +9,6 @@ class HomeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return SizedBox(
-    //   width: double.infinity,
-    //   height: MediaQuery.of(context).size.height * 0.2,
-    //   child: Card(
-    //     color: Colors.purple.shade300,
-    //     elevation: 2,
-    //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    //     child: Padding(
-    //       padding: EdgeInsets.all(12),
-    //       child: Column(
-    //         children: [
-    //           Text(
-    //             "Today's tasks",
-    //             style: appstyle(17, Colors.white, FontWeight.normal),
-    //           )
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
-
 //The Home container lists
     return Column(
       children: [
