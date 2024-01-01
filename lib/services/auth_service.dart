@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,9 @@ import 'package:todo_app/utils/utils.dart';
 
 import '../utils/constants.dart';
 
-class AuthService {
+class AuthService extends ChangeNotifier {
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
   void signUpUser({
     required BuildContext context,
     required String email,
@@ -30,12 +33,20 @@ class AuthService {
           mobile: mobile,
           password: password,
           token: "");
-
+      _isLoading = true;
+      notifyListeners();
       http.Response res = await http.post(
         Uri.parse('${Constants.uri}user/register'),
         body: user.toJson(),
         headers: <String, String>{
           "Content-Type": "application/json; charset=utf-8",
+        },
+      );
+      Future.delayed(
+        const Duration(seconds: 4),
+        () {
+          _isLoading = false;
+          notifyListeners();
         },
       );
 
@@ -65,16 +76,26 @@ class AuthService {
       // final User user =
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      String? token = prefs.getString("Bearer");
+      // String? token = prefs.getString("Bearer");
+      _isLoading = true;
+      notifyListeners();
       http.Response res = await http.post(
         Uri.parse('${Constants.uri}user/login'),
         body: jsonEncode({'email': email, 'password': password}),
         headers: <String, String>{
           "Content-Type": "application/json; charset=utf-8",
-          'authorization': 'Bearer ${token!}',
+          // 'authorization': 'Bearer ${token!}',
+        },
+      );
+      Future.delayed(
+        const Duration(seconds: 4),
+        () {
+          _isLoading = false;
+          notifyListeners();
         },
       );
 
+      // ignore: use_build_context_synchronously
       httpErrorHandle(
         response: res,
         context: context,
@@ -93,6 +114,7 @@ class AuthService {
           // print(useId);
 
           final userId = jsonDecode(res.body)['_id'];
+          log(userId);
           // print(userId);
           if (token != null) {
             navigator.pushAndRemoveUntil(
@@ -128,7 +150,12 @@ class AuthService {
       );
     }
   }
+
 //Get User data;
+  void logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
 
   void getUserData(
     BuildContext context,

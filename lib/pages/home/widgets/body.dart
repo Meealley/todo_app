@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Good $greeting! ${user.firstname.substring(0, 1).toUpperCase()}${user.firstname.substring(1)}",
+                          "Good", //$greeting! ${user.firstname.substring(0, 1).toUpperCase()}${user.firstname.substring(1)}",
                           style: appstyle(
                             23,
                             Colors.black,

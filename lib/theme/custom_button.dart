@@ -5,7 +5,13 @@ import 'package:todo_app/theme/app_colors.dart';
 class CustomButton extends StatelessWidget {
   final String title;
   final Function() onPressed;
-  const CustomButton({super.key, required this.title, required this.onPressed});
+  final bool isLoading;
+  const CustomButton({
+    super.key,
+    required this.title,
+    required this.onPressed,
+    this.isLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +25,13 @@ class CustomButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 18),
         ),
         onPressed: onPressed,
-        child: Text(
-          title,
-          style: GoogleFonts.epilogue(
-              textStyle: const TextStyle(fontSize: 18, color: AppConst.kLight)),
-        ));
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : Text(
+                title,
+                style: GoogleFonts.epilogue(
+                    textStyle:
+                        const TextStyle(fontSize: 18, color: AppConst.kLight)),
+              ));
   }
 }

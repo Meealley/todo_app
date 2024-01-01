@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/pages/login/widget/forgot_password_label.dart';
 import 'package:todo_app/theme/app_colors.dart';
 import 'package:todo_app/theme/app_style.dart';
@@ -23,7 +24,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final AuthService authService = AuthService();
+  // final AuthService authService = AuthService();
 
   bool _obscureText = false;
   String _email = "";
@@ -39,6 +40,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final authService = context.read<AuthService>();
     return Form(
         key: widget.loginKey,
         child: Column(
@@ -148,6 +150,7 @@ class _LoginFormState extends State<LoginForm> {
               width: double.infinity,
               child: CustomButton(
                   title: "Login",
+                  isLoading: authService.isLoading,
                   onPressed: () {
                     if (widget.loginKey.currentState!.validate()) {
                       widget.loginKey.currentState!.save();
